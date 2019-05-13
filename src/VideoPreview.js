@@ -18,7 +18,6 @@ class VideoPreview extends React.Component {
         // Initialize main variables
         let ctx = canvas.getContext('2d');
         let video = createVideo();
-        let time = Math.floor(video.currentTime);
 
         // Rough sentence length calculation
         let sentenceLength01 = createLineLength(ctx, textValues[0], textValues[1], textValues[2]);
@@ -37,12 +36,11 @@ class VideoPreview extends React.Component {
         updateCanvas()
         video.play();
 
-
         function updateCanvas() {
             // Setup required values
             let linesData = getLineProperties(ctx);
             ctx.font = `10px ${VideoData.font}`;
-
+            let time = Math.floor(video.currentTime);
             // Animate through iteration all properties
             animateProperties(animationProperties, time);
 
